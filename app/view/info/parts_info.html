@@ -1,0 +1,100 @@
+{extend name="public/base"/}
+{block name="content"}
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Velonic</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
+                                            <li class="breadcrumb-item active">Starter</li>
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title">产品信息</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12 overflow-x-auto">
+                                                <table id="datatable" class="table table-hover table-bordered dt-responsive w-100">
+                                                    <thead>
+                                                        <tr class="fs-6">
+                                                            <th>序号</th>
+                                                            <th>产品号</th>
+                                                            <th>名称</th>
+                                                            <th>图片</th>
+                                                            <th>项目</th>
+                                                            <th>上级号</th>
+                                                            <th>状态</th>
+                                                            <th>备注</th>
+                                                            <th>操作</th>
+                                                        </tr>
+                                                    </thead>
+
+                                             
+                                                    <tbody>
+                                                        {foreach $parts as $k=>$part}
+                                                            <tr>
+                                                                <td>{$k+1}</td>
+                                                                <td>{$part.part_no}</td>
+                                                                <td>{$part.part_name}</td>
+                                                                <td>{$part.part_image}</td>
+                                                                <td>{$part.proj_id}</td>
+                                                                <td>{$part.up_id}</td>
+                                                                <td>{$part.status}</td>
+                                                                <td>{$part.remark}</td>
+                                                                <td id="editCol">
+                                                                   <a href="javascript: void(0);" class="text-reset fs-16 px-1" onclick="openModal(this)"> <i class="ri-edit-line"></i></a>
+                                                                   <a href="javascript: void(0);" class="text-reset fs-16 px-1" onclick="moldDel(this,{$part.id})"> <i class="ri-delete-bin-2-line"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                        {/foreach}
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div> <!-- End Row -->
+                        
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <!-- Footer Start -->
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <script>document.write(new Date().getFullYear())</script> © RainCoat - By <a href="http://www.bootstrapmb.com">RainCoat</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- end Footer -->
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+{/block}

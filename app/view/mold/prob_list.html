@@ -1,0 +1,269 @@
+{extend name="public/base"/}
+{block name="content"}
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+            <div class="content-page">
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="{:url("mold/problist")}">问题</a></li>
+                                            <li class="breadcrumb-item active">问题信息</li>
+                                        </ol>
+                                    </div>
+                                    <div class="page-title"> 
+                                    <h3 class="title">问题信息 
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#stand-modal">加入问题</button></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+                        <!-- start table -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12 overflow-x-auto">
+                                                <table id="datatable" class="table table-hover table-bordered mb-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="min-width: 60px;">序号</th>
+                                                            <th style="min-width: 60px;">来源</th>
+                                                            <th style="min-width: 100px;">模具编号</th>
+                                                            <th style="min-width: 100px;">发生时间</th>
+                                                            <th style="min-width: 100px;">发生地点</th>
+                                                            <th style="min-width: 90px;">提出人</th>
+                                                            <th style="min-width: 100px;">发生阶段</th>
+                                                            <th style="min-width: 100px;">问题板块</th>
+                                                            <th style="min-width: 100px;">问题类别</th>
+                                                            <th style="min-width: 150px;">问题图片</th>
+                                                            <th style="min-width: 100px;text-overflow: ellipsis">问题描述</th>
+                                                            <th style="min-width: 60px;">严重程度</th>
+                                                            <th style="min-width: 60px;">原因分析</th>
+                                                            <th style="min-width: 150px;">措施</th>
+                                                            <th style="min-width: 90px;">责任人</th>
+                                                            <th style="min-width: 100px;">计划完成时间</th>
+                                                            <th style="min-width: 100px;">实际完成时间</th>
+                                                            <th style="min-width: 50px;">状态</th>
+                                                            <th style="min-width: 70px;">备注</th>
+                                                            <th style="min-width: 100px;">操作</th>
+                                                        </tr>
+                                                    </thead>
+
+                                             
+                                                    <tbody>
+                                                        {foreach $probs as $k=>$mold}
+                                                            <tr>
+                                                                <td>{$k+1}</td>
+                                                                <td>{$mold.prob_input}</td>
+                                                                <td>{$mold.mold_no}</td>
+                                                                <td>{$mold.occu_time}</td>
+                                                                <td>{$mold.occu_scene}</td>
+                                                                <td>{$mold.proposer}</td>
+                                                                <td>{$mold.occu_stage}</td>
+                                                                <td>{$mold.prob_area}</td>
+                                                                <td>{$mold.prob_cate}</td>
+                                                                <td>{$mold.prob_image}</td>
+                                                                <td>{$mold.prob_desc}</td>
+                                                                <td>{$mold.severity}</td>
+                                                                <td class="text-truncate"style="max-width: 150px;">{$mold.cause_analysis}</td>
+                                                                <td class="text-truncate"style="max-width: 150px;">{$mold.measure}</td>
+                                                                <td>{$mold.resp_person}</td>
+                                                                <td>{$mold.plan_comp_time}</td>
+                                                                <td>{$mold.actu_comp_time}</td>
+                                                                <td>{$mold.status}</td>
+                                                                <td>{$mold.remark}</td>
+                                                                <td id="editCol">
+                                                                   <a href="javascript: void(0);" class="text-reset fs-16 px-1" onclick="openModal(this)"> <i class="ri-edit-line"></i></a>
+                                                                   <a href="javascript: void(0);" class="text-reset fs-16 px-1" onclick="moldDel(this,{$mold.id})"> <i class="ri-delete-bin-2-line"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                        {/foreach}
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div> 
+                        <!-- end table -->
+
+                        <!--  Modal content for the Large example -->
+                                <div id="stand-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id="standard-modalLabel">模具信息</h4>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>                                                 
+                                                <div class="modal-body">
+                                                     <!-- Form-validation -->
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                        <div class="form" >
+                                                                            <form class="form-horizontal tasi-form" id="moldInfoForm" method="get" action="#" novalidate="novalidate">
+                                                                                <div class="form-group " style="margin-bottom: 25px;">
+                                                                                    <label for="" class="col-form-label col-lg-2">项目编号 *</label>
+                                                                                    <div class="col-lg-10">
+                                                                                        <input class="form-control " id="proj_no" name="proj_no" type="text">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group row">
+                                                                                    <div class="row" class="col-auto">
+                                                                                        <label for="firstname" class="col-lg-2 col-form-label">模具编号 *</label>
+                                                                                        <div class="col-4">
+                                                                                            <input class="form-control" id="mold_no" name="mold_no" type="text">
+                                                                                        </div>
+                                                                                        <label for="lastname" class="col-lg-2 col-form-label">模具名称 *</label>
+                                                                                        <div class="col-4">
+                                                                                            <input class="form-control" id="mold_name" name="mold_name" type="text">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="row" class="col-auto">
+                                                                                        <label for="username" class="col-lg-2 col-form-label">产品编号 *</label>
+                                                                                        <div class="col-4">
+                                                                                            <input class="form-control " id="part_no" name="part_no" type="text">
+                                                                                        </div>
+                                                                                        <label for="password" class="col-lg-2 col-form-label">产品名称 *</label>
+                                                                                        <div class="col-4">
+                                                                                            <input class="form-control " id="part_name" name="part_name" type="text">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group ">
+                                                                                    <label for="confirm_password" class="col-form-label col-lg-2">模具类型 *</label>
+                                                                                    <div class="col-lg-10">
+                                                                                        <select class="form-select" id="mold_type" name="mold_type">
+                                                                                            <option>两板模</option>
+                                                                                            <option>三板模</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group ">
+                                                                                    <label for="confirm_password" class="col-form-label col-lg-2">状态 *</label>
+                                                                                    <div class="col-lg-10">
+                                                                                        <select class="form-select" id="current_status" name="current_status">
+                                                                                            <option>开发</option>
+                                                                                            <option>生产</option>
+                                                                                            <option>维修</option>
+                                                                                            <option>外协</option>
+                                                                                            <option>报废</option>
+                                                                                            <option>设变</option>
+                                                                                            <option>维护</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group ">
+                                                                                    <label for="confirm_password" class="col-form-label col-lg-2">存放地 </label>
+                                                                                    <div class="col-lg-10">
+                                                                                        <input class="form-control " id="location" name="location" type="text">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group ">
+                                                                                    <label for="confirm_password" class="col-form-label col-lg-2">交付日期 </label>
+                                                                                    <div class="col-lg-10">
+                                                                                        <input class="form-control" id="delivery_date" type="date" name="delivery_date">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group ">
+                                                                                    <label for="confirm_password" class="col-form-label col-lg-2">供应商 </label>
+                                                                                    <div class="col-lg-10">
+                                                                                        <select class="form-select" id="supplier" name="supplier">
+                                                                                            <option>重庆恒东</option>
+                                                                                            <option>重庆芸生</option>
+                                                                                            <option>江阴常青</option>
+                                                                                            <option>上海秉直</option>
+                                                                                            <option>吉林恒通</option>
+                                                                                            <option>江苏艺极</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group ">
+                                                                                    <label for="confirm_password" class="col-form-label col-lg-2">模具尺寸</label>
+                                                                                    <div class="row" style="margin-bottom: 15px;">
+                                                                                        <div class="col-2">
+                                                                                            <input class="form-control " id="length" name="length" type="text" placeholder="长m">
+                                                                                        </div>
+                                                                                        <div class="col-2">
+                                                                                            <input class="form-control " id="width" name="width" type="text" placeholder="宽m">
+                                                                                        </div>
+                                                                                        <div class="col-2">
+                                                                                            <input class="form-control " id="height" name="height" type="text" placeholder="高m">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div> 
+                                                                                <div class="form-group g-2">
+                                                                                    <div class="row col-auto">
+                                                                                        <label for="confirm_password" class="col-2 col-form-label">产品体积 </label>
+                                                                                        <div class="col-4">
+                                                                                            <input class="form-control " id="part_volume" name="part_volume" type="text" placeholder='m&#xB3;'>
+                                                                                        </div>
+                                                                                        <label for="confirm_password" class="col-2 col-form-label">模具质量 </label>
+                                                                                        <div class="col-4">
+                                                                                            <input class="form-control " id="mold_weight" name="mold_weight" type="text" placeholder="KG">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group ">
+                                                                                    <label for="confirm_password" class="col-form-label col-auto">供应商模具号 </label>
+                                                                                    <div class="col-lg-10">
+                                                                                        <input class="form-control " id="supplier_mold_no" name="supplier_mold_no" type="text">
+                                                                                        </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div> <!-- .form -->
+                                                            </div> <!-- col -->
+                                                        </div>
+                                                    </div>  
+                                                    <div class="modal-footer">
+                                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">关闭</button>
+                                                    <button type="button" id="submitButton" class="btn btn-primary">提交</button>
+                                                </div>
+                                            </div><!-- /.modal-content -->
+                                        </div><!-- /.modal-dialog -->
+                                    </div><!-- /.modal -->
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <!-- Footer Start -->
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <script>document.write(new Date().getFullYear())</script> © RainCoat - By <a href="http://www.bootstrapmb.com">RainCoat</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- end Footer -->
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+{/block}
+{block name="script"}
+    <!-- 网站script -->
+    <script type="text/javascript">
+
+    </script>
+{/block}

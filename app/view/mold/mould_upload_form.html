@@ -1,0 +1,78 @@
+<style>
+    /* 自定义表单样式 */
+    form {
+        width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+    
+    input[type="text"],
+    input[type="date"],
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+    }
+    
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<form action="{:url('saveMould')}" method="post">
+    <label for="mould_no">模具编号：</label>
+    <input type="text" id="mould_no" name="mould_no" required><br>
+    
+    <label for="mould_name">模具名称：</label>
+    <input type="text" id="mould_name" name="mould_name" required><br>
+    
+    <label for="supplier">供应商：</label>
+    <input type="text" id="supplier" name="supplier" required><br>
+    
+    <label for="supplier_mould_no">供应商模具号：</label>
+    <input type="text" id="supplier_mould_no" name="supplier_mould_no" required><br>
+    
+    <label for="delivery_date">交付日期：</label>
+    <input type="date" id="delivery_date" name="delivery_date" required><br>
+    
+    <label for="mould_type">模具类型：</label>
+    <input type="text" id="mould_type" name="mould_type" required><br>
+    
+    <label for="product_name">产品名称：</label>
+    <input type="text" id="product_name" name="product_name" required><br>
+    
+    <label for="product_no">产品编号：</label>
+    <input type="text" id="product_no" name="product_no" required><br>
+    
+    <input type="submit" value="提交">
+</form>
+
+<script type="text/javascript">
+    
+        function submitForm(event) {
+        event.preventDefault(); // 阻止表单默认提交行为
+
+        // 在此处执行表单提交操作
+        // 可以使用 Ajax 请求将表单数据发送到服务器进行保存
+
+        // 提交成功后返回上一个页面
+        history.back();
+    }
+</script>

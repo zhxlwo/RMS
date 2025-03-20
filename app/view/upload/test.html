@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>发送数据请求</title>
+</head>
+<body>
+    <button id="myButton">点击发送请求</button>
+    <div id="response"></div>
+
+    <script>
+
+
+        // 页面加载完成后绑定事件
+        document.addEventListener("DOMContentLoaded", function() {
+            var loadButton = document.getElementById("myButton");
+            loadButton.click();
+        });
+
+
+
+
+        var button = document.getElementById("myButton");
+        var responseDiv = document.getElementById("response");
+
+        button.addEventListener("click", function() {
+            // 创建一个XMLHttpRequest对象
+            var xhr = new XMLHttpRequest();
+
+            // 设置请求方法和URL
+            xhr.open("GET", "getImages", true);
+
+            // 发送请求
+            xhr.send();
+
+            // 处理响应
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = xhr.responseText;
+                    responseDiv.innerHTML = response;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

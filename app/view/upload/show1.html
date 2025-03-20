@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>图片展示</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var currentDate = new Date();
+
+            // 初始化日期选择器
+            $('#datepicker').val(formatDate(currentDate));
+
+            // 加载当前日期的图片
+            loadImages(formatDate(currentDate));
+
+            // 前一天按钮点击事件
+            $('#prevBtn').click(function() {
+                currentDate.setDate(currentDate.getDate() - 1);
+                $('#datepicker').val(formatDate(currentDate));
+                loadImages(formatDate(currentDate));
+            });
+
+            // 后一天按钮点击事件
+            $('#nextBtn').click(function() {
+                currentDate.setDate(currentDate.getDate() + 1);
+                $('#datepicker').val(formatDate(currentDate));
+                loadImages(formatDate(currentDate));
+            });
+
+            // 加载图片按钮点击事件
+            $('#loadBtn').click(function() {
+                var selectedDate = $('#datepicker').val();
+                loadImages(selectedDate);
+            });
+
+            // 格式化日期为 "YYYY-MM-DD" 格式
+            function formatDate(date) {
+                var year = date.getFullYear();
+                var month = ('0' + (date.getMonth() + 1)).slice(-2);
+                var day = ('0' + date.getDate()).slice(-2);
+                return year + '-' + month + '-' + day;
+            }
+
+            // 加载指定日期的图片
+            function loadImages(date) {
+                // 发送 AJAX 请求到后端，获取图片地址数据
+                $.ajax({
+                    url: 'show/getImages',
+                    type: 'GET',
+                    data: { date: date },
+
+                    success: function(response) {
+                        // 解析返回的图片地址数据
+                        console.log(date);
+                        var images = JSON.parse(response);
+
+                         // 清空图片展示区域
+                        $('#imageContainer').empty();
+
+                        // 遍历图片地址数据，生成图片标签并添加到展示区域
+                        for (var i = 0; i < images.length; i++) {
+                            var image = images[i];
+
+                            var row = $('<tr>');
+                            row.append($('<td>').text(i + 1));
+                            row.append($('<td>').text(image.mould_number));
+                            row.append($('<td>').append($('<img>').attr('src', image.image1)));
+                            row.append($('<td>').append($('<img>').attr('src', image.image2)));
+                            row.append($('<td>').append($('<img>').attr('src', image.image3)));
+
+                            $('#imageContainer').append(row);
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>图片展示</h1>
+    <div>
+        <label for="datepicker">选择日期:</label>
+        <input type="date" id="datepicker">
+        <button id="prevBtn">前一天</button>
+        <button id="nextBtn">后一天</button>
+        <button id="loadBtn">加载图片</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>模具号</th>
+                <th>图片一</th>
+                <th>图片二</th>
+                <th>图片三</th>
+            </tr>
+        </thead>
+        <tbody id="imageContainer"></tbody>
+    </table>
+</body>
+</html>

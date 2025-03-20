@@ -1,0 +1,1 @@
+sudo docker run -it --name phpset -v/media/devmon/sdc2-usb-Kingston_DataTra/data/nginx/html:/www -p 8088:9000 php8-fpm

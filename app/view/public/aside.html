@@ -1,0 +1,145 @@
+                    <!-- ========== Left Sidebar Start ========== -->
+            <div class="leftside-menu">
+
+                <!-- Brand Logo Light -->
+                <a href="{:url("index/index")}" class="logo logo-light">
+                    <span class="logo-lg">
+                        <!-- <img src="__VC__/assets/images/logo.png" alt="logo"> -->
+                        <i class="ri-collage-line fs-3"></i><i class="fs-4">信息管理系统</i>
+                    </span>
+                    <span class="logo-sm">
+                        <!-- <img src="__VC__/assets/images/logo-sm.png" alt="small logo"> -->
+                        <i class="ri-collage-line fs-3"></i>
+                    </span>
+                </a>
+
+                <!-- Brand Logo Dark -->
+                <a href="{:url("index/index")}" class="logo logo-dark">
+                    <span class="logo-lg">
+                        <img src="__VC__/assets/images/logo-dark.png" alt="dark logo">
+                    </span>
+                    <span class="logo-sm">
+                        <img src="__VC__/assets/images/logo-sm.png" alt="small logo">
+                    </span>
+                </a>
+
+                <!-- Sidebar -left -->
+                <div class="h-100" id="leftside-menu-container" data-simplebar>
+                    <!--- Sidemenu -->
+                    <ul class="side-nav">
+
+                        <li class="side-nav-title">Main</li>
+
+                        <li class="side-nav-item">
+                            <a href="{:url("index/index")}" class="side-nav-link">
+                                <i class="ri-dashboard-3-line"></i>
+                                <span class="badge bg-success float-end">9+</span>
+                                <span> Dashboard </span>
+                            </a>
+                        </li>
+
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarPages" aria-expanded="false" aria-controls="sidebarPages" class="side-nav-link">
+                                <i class="ri-pages-line"></i>
+                                <span> 模具内容 </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarPages">
+                                <ul class="side-nav-second-level">
+                                    <li><a href="{:url("mold/moldinfo")}">模具信息</a></li>
+                                    <li>
+                                        <a href="pages-contact-list.html">维修设变</a>
+                                    </li>
+                                    <li>
+                                        <a href="{:url("mold/problist")}">试模问题点</a>
+                                    </li>
+                                    <li>
+                                        <a href="pages-profile.html">发泡分析</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarPagesAuth" aria-expanded="false" aria-controls="sidebarPagesAuth" class="side-nav-link">
+                                <i class="ri-group-2-line"></i>
+                                <span> 信息管理 </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarPagesAuth">
+                                <ul class="side-nav-second-level">
+                                    <li>
+                                        <a href="{:url("info/partsinfo")}">产品信息</a>
+                                    </li>
+                                    <li>
+                                        <a href="{:url("info/supinfo")}">供应商信息</a>
+                                    </li>
+                                    <li>
+                                        <a href="{:url("info/custinfo")}">客户信息</a>
+                                    </li>
+                                    <li>
+                                        <a href="{:url("info/projinfo")}">项目信息</a>
+                                    </li>
+                                    <li>
+                                        <a href="{:url("info/machinfo")}">设备管理</a>
+                                    </li>
+                                    <li>
+                                        <a href="{:url("info/storinfo")}">库位管理</a>
+                                    </li>                                    
+                                    <li>
+                                        <a href="{:url("info/userinfo")}">用户管理</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="side-nav-title">Components</li>
+
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarBaseUI" aria-expanded="false" aria-controls="sidebarBaseUI" class="side-nav-link">
+                                <i class="ri-briefcase-line"></i>
+                                <span> 工具 </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarBaseUI">
+                                <ul class="side-nav-second-level">
+                                    <li>
+                                        <a href="ui-accordions.html">链接</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarExtendedUI" aria-expanded="false" aria-controls="sidebarExtendedUI" class="side-nav-link">
+                                <i class="ri-compasses-2-line"></i>
+                                <span> Extended UI </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarExtendedUI">
+                                <ul class="side-nav-second-level">
+                                    <li>
+                                        <a href="extended-portlets.html">Portlets</a>
+                                    </li>
+                                    <li>
+                                        <a href="extended-scrollbar.html">Scrollbar</a>
+                                    </li>
+                                    <li>
+                                        <a href="extended-range-slider.html">Range Slider</a>
+                                    </li>
+                                    <li>
+                                        <a href="extended-scrollspy.html">Scrollspy</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                    <!--- End Sidemenu -->
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <!-- ========== Left Sidebar End ========== -->
+<!--/_aside 作为公共模版分离出去-->

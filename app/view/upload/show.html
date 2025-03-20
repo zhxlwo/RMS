@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>图片展示网页</title>
+    <style>
+        /* 美化样式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .image-item {
+            margin: 10px;
+            width: 200px;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+        }
+
+ /*       .image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+*/
+        .image-modal img {
+            max-width: 80%;
+            max-height: 80%;
+        }
+
+        .admin-panel {
+            margin-bottom: 20px;
+        }
+
+        .admin-panel label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>图片展示网页</h1>
+
+    <div class="admin-panel">
+        <label for="start-date">开始日期：</label>
+        <input type="date" id="start-date">
+
+        <label for="end-date">结束日期：</label>
+        <input type="date" id="end-date">
+
+        <button id="load-images">加载图片</button>
+    </div>
+
+    <div class="container" id="image-container"></div>
+
+    <div class="image-modal" id="modal">
+        <img id="modal-image" src="">
+    </div>
+
+    <script>
+        // 图片放大功能
+        function openModal(imageUrl) {
+            var modal = document.getElementById("modal");
+            var modalImage = document.getElementById("modal-image");
+            modalImage.src = imageUrl;
+            modal.style.display = "flex";
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("modal");
+            modal.style.display = "none";
+        }
+
+        // 加载图片
+        function loadImages() {
+            var startDate = document.getElementById("start-date").value;
+            var endDate = document.getElementById("end-date").value;
+            var container = document.getElementById("image-container");
+            container.innerHTML = ""; // 清空容器
+
+            // 发送请求获取图片路径
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.success) {
+                        var images = response.data;
+
+                        for (var i = 0; i < images.length; i++) {
+                            var imageUrl = images[i].filepath_file;
+                            var imageItem = document.createElement("div");
+                            console.log(imageUrl);
+                            imageItem.className = "image-item";
+                            imageItem.style.backgroundImage = "url(" +"ima/"+imageUrl+".png" + ")";
+                            imageItem.addEventListener("click", function() {
+                                openModal(imageUrl);
+                            });
+                            container.appendChild(imageItem);
+                        }
+                    } else {
+                        console.log("加载图片失败");
+                    }
+                }
+            };
+
+            xhr.open("GET", "getImages" + startDate + "&end_date=" + endDate, true);
+            xhr.send();
+        }
+
+        // 页面加载完成后绑定事件
+        document.addEventListener("DOMContentLoaded", function() {
+            var loadButton = document.getElementById("load-images");
+            loadButton.addEventListener("click", loadImages);
+        });
+    </script>
+</body>
+</html>

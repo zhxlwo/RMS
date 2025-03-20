@@ -1,0 +1,103 @@
+{extend name="public/base"/}
+{block name="content"}
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Velonic</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
+                                            <li class="breadcrumb-item active">Project</li>
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title">项目信息</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+                        <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12 overflow-x-auto">
+                                            <table id="datatable" class="table table-hover table-bordered dt-responsive w-100">
+                                                <thead>
+                                                    <tr class="fs-6">
+                                                        <th>序号</th>
+                                                        <th>项目号</th>
+                                                        <th>车型</th>
+                                                        <th>客户</th>
+                                                        <th>启动时间</th>
+                                                        <th>量产时间</th>
+                                                        <th>结束时间</th>
+                                                        <th>状态</th>
+                                                        <th>备注</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+
+                                         
+                                                <tbody>
+                                                    {foreach $projects as $k=>$project}
+                                                        <tr>
+                                                            <td>{$k+1}</td>
+                                                            <td>{$project.proj_no}</td>
+                                                            <td>{$project.style}</td>
+                                                            <td>{$project.customer}</td>
+                                                            <td>{$project.start_time}</td>
+                                                            <td>{$project.sop}</td>
+                                                            <td>{$project.eop}</td>
+                                                            <td>{$project.status}</td>
+                                                            <td>{$project.remark}</td>
+                                                            <td id="editCol">
+                                                               <a href="javascript: void(0);" class="text-reset fs-16 px-1" onclick="openModal(this)"> <i class="ri-edit-line"></i></a>
+                                                               <a href="javascript: void(0);" class="text-reset fs-16 px-1" onclick="moldDel(this,{$project.id})"> <i class="ri-delete-bin-2-line"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    {/foreach}
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div> <!-- End Row -->
+                        
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <!-- Footer Start -->
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <script>document.write(new Date().getFullYear())</script> © RainCoat - By <a href="http://www.bootstrapmb.com">RainCoat</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- end Footer -->
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+{/block}

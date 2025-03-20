@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{block name="meta"}
+		<!-- 网站关键字 -->
+		{include file="public/meta"/}
+	{/block}
+
+	{block name="seo"}
+		<!-- 网站关键字 -->
+	{/block}
+
+	{block name="link"}
+		<!-- 资源加载 -->
+		{include file="public/link"/}
+	{/block}
+
+</head>
+<body>
+	<!-- Begin page -->
+    <div class="wrapper">
+			{block name="topbar"}
+			<!-- 顶导航 -->
+			{include file="public/topbar"/}
+			{/block}
+
+			{block name="aside"}
+			{include file="public/aside"/}
+			<!-- 侧导航 -->
+			{/block}
+
+			{block name="content"}
+			<!-- 内容 -->
+			{/block}
+    </div>
+	<!-- END wrapper -->
+			{block name="theme"}
+			{include file="public/theme"/}
+			{/block}
+
+
+			{include file="public/script"/}
+			{block name="script"}
+			<!-- 网站script -->
+			{/block}
+</body>
+</html>
+
+

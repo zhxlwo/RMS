@@ -1,0 +1,276 @@
+{extend name="public/base"/}
+{block name="content"}
+<!-- 页面主题内容 -->
+        <!--Main Content Start -->
+        <section class="content">
+<!-- 导入navbar内容-->
+{include file="public/navbar"/}
+
+            <!-- Page Content Start -->
+            <!-- ================== -->
+
+            <div class="wraper container-fluid">
+                <div class="page-title"> 
+                    <h3 class="title">Dashboard </h3> 
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-sm-6"> 
+                                <div class="tile-stats white-bg"> 
+                                    <div class="status">
+                                        <h3 class="m-t-0">15% more</h3> 
+                                        <p>Monthly visitor statistics</p>
+                                    </div> 
+                                    <div class="chart-inline">
+                                        <span class="inlinesparkline"><canvas width="383" height="32"></canvas></span> 
+                                    </div>
+                                </div> 
+                            </div>
+
+                            <div class="col-sm-6"> 
+                                <div class="tile-stats white-bg"> 
+                                    <div class="status">
+                                        <h3 class="m-t-0">15</h3> 
+                                        <p>Avg. Sales per day</p>
+                                    </div> 
+                                    <span class="dynamicbar-big"><canvas width="205" height="32"></canvas></span> 
+                                </div> 
+                            </div>
+
+                            <div class="col-sm-6"> 
+                                <div class="tile-stats white-bg"> 
+                                    <div class="status">
+                                        <h3 class="m-t-0">-0.0102</h3> 
+                                        <p>Stock Market</p>
+                                    </div> 
+                                    <span id="compositeline"><canvas width="383" height="32"></canvas></span> 
+                                </div> 
+                            </div>
+
+                            <div class="col-sm-6"> 
+                                <div class="tile-stats white-bg"> 
+                                    <div class="col-sm-8">
+                                        <div class="status">
+                                        <h3 class="m-t-15">61.5%</h3> 
+                                        <p>US Dollar Share</p>
+                                    </div> 
+                                    </div>
+                                    <div class="col-sm-4 m-t-20">
+                                        <span class="sparkpie-big"><canvas width="98" height="50"></canvas></span> 
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div> <!-- end col -->
+
+                    <div class="col-lg-6">
+                        <div class="portlet"><!-- /primary heading -->
+                            <div class="portlet-heading">
+                                <h3 class="portlet-title text-dark text-uppercase">
+                                    Live Visiters
+                                </h3>
+                                <div class="portlet-widgets">
+                                    <a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
+                                    <span class="divider"></span>
+                                    <a data-toggle="collapse" data-parent="#accordion1" href="#portlet2"><i class="ion-minus-round"></i></a>
+                                    <span class="divider"></span>
+                                    <a href="#" data-toggle="remove"><i class="ion-close-round"></i></a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div id="portlet2" class="panel-collapse collapse in">
+                                <div class="portlet-body">
+                                    <div id="rickshaw9"></div> 
+                                </div>
+                            </div>
+                        </div> <!-- /Portlet -->
+                    </div> <!-- end col -->
+                </div> <!-- end row -->
+
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="portlet"><!-- /primary heading -->
+                            <div class="portlet-heading">
+                                <h3 class="portlet-title text-dark text-uppercase">
+                                    Website Stats
+                                </h3>
+                                <div class="portlet-widgets">
+                                    <a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
+                                    <span class="divider"></span>
+                                    <a data-toggle="collapse" data-parent="#accordion1" href="#portlet1"><i class="ion-minus-round"></i></a>
+                                    <span class="divider"></span>
+                                    <a href="#" data-toggle="remove"><i class="ion-close-round"></i></a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div id="portlet1" class="panel-collapse collapse in">
+                                <div class="portlet-body">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div id="website-stats" style="position: relative;height: 320px;"></div>
+                                            <div class="row text-center m-t-30 m-b-30">
+                                                <div class="col-sm-4">
+                                                    <h4>86,956</h4>
+                                                    <small class="text-muted"> Weekly Report</small>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <h4>86,69</h4>
+                                                    <small class="text-muted">Monthly Report</small>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <h4>948,16</h4>
+                                                    <small class="text-muted">Yearly Report</small>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h4 class="m-b-15 text-uppercase">System status</h4>
+                                            <p class="small">Handles - <span class="text-purple">80%</span></p>
+                                            <div class="progress">
+                                              <div class="progress-bar progress-bar-purple progress-animated wow animated" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                              </div><!-- /.progress-bar .progress-bar-danger -->
+                                            </div><!-- /.progress .no-rounded -->
+                                            <p class="small">Threads - <span class="text-warning">65%</span></p>
+                                            <div class="progress">
+                                              <div class="progress-bar progress-bar-warning progress-animated wow animated" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%">
+                                              </div><!-- /.progress-bar .progress-bar-warning -->
+                                            </div><!-- /.progress .no-rounded -->
+                                            <p class="small">Proccess - <span class="text-success">40%</span></p>
+                                            <div class="progress">
+                                              <div class="progress-bar progress-bar-success progress-animated wow animated" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                              </div><!-- /.progress-bar .progress-bar-success -->
+                                            </div><!-- /.progress .no-rounded -->
+                                            <p class="small">Cached - <span class="text-info">70%</span></p>
+                                            <div class="progress">
+                                              <div class="progress-bar progress-bar-info progress-animated wow animated" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                                              </div><!-- /.progress-bar .progress-bar-info -->
+                                            </div><!-- /.progress .no-rounded -->
+                                            <p class="small">Cached 2 - <span class="text-info">50%</span></p>
+                                            <div class="progress">
+                                              <div class="progress-bar progress-bar-pink progress-animated wow animated" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+                                              </div><!-- /.progress-bar .progress-bar-pink -->
+                                            </div><!-- /.progress .no-rounded -->
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div> <!-- /Portlet -->
+
+                    </div> <!-- end col -->
+
+                    
+                </div> <!-- End row -->
+
+
+
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="portlet"><!-- /primary heading -->
+                            <div class="portlet-heading">
+                                <h3 class="portlet-title text-dark text-uppercase">
+                                    Projects
+                                </h3>
+                                <div class="portlet-widgets">
+                                    <a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
+                                    <span class="divider"></span>
+                                    <a data-toggle="collapse" data-parent="#accordion1" href="#portlet2"><i class="ion-minus-round"></i></a>
+                                    <span class="divider"></span>
+                                    <a href="#" data-toggle="remove"><i class="ion-close-round"></i></a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div id="portlet2" class="panel-collapse collapse in">
+                                <div class="portlet-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Project Name</th>
+                                                    <th>Start Date</th>
+                                                    <th>Due Date</th>
+                                                    <th>Status</th>
+                                                    <th>Assign</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Velonic Admin v1</td>
+                                                    <td>01/01/2015</td>
+                                                    <td>26/04/2015</td>
+                                                    <td><span class="label label-info">Released</span></td>
+                                                    <td>Coderthemes</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Velonic Frontend v1</td>
+                                                    <td>01/01/2015</td>
+                                                    <td>26/04/2015</td>
+                                                    <td><span class="label label-success">Released</span></td>
+                                                    <td>Coderthemes</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>Velonic Admin v1.1</td>
+                                                    <td>01/05/2015</td>
+                                                    <td>10/05/2015</td>
+                                                    <td><span class="label label-pink">Pending</span></td>
+                                                    <td>Coderthemes</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>Velonic Frontend v1.1</td>
+                                                    <td>01/01/2015</td>
+                                                    <td>31/05/2015</td>
+                                                    <td><span class="label label-purple">Work in Progress</span></td>
+                                                    <td>Coderthemes</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>Velonic Admin v1.3</td>
+                                                    <td>01/01/2015</td>
+                                                    <td>31/05/2015</td>
+                                                    <td><span class="label label-warning">Coming soon</span></td>
+                                                    <td>Coderthemes</td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- /Portlet -->
+                    </div>
+                </div> <!-- end row -->
+
+                <div class="row">
+                    <div class="col-sm-12">
+
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- Page Content Ends -->
+            <!-- ================== -->
+
+            <!-- Footer Start -->
+            <footer class="footer">
+                2015 © Velonic.
+            </footer>
+            <!-- Footer Ends -->
+
+
+
+        </section>
+        <!-- Main Content Ends -->
+{/block}
