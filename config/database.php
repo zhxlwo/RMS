@@ -24,11 +24,11 @@ return [
             // 数据库类型
             'type'            => env('DB_TYPE', 'mysql'),
             // 服务器地址
-            'hostname'        => env('DB_HOST', '10.0.0.35'),
+            'hostname'        => env('DB_HOST', '10.0.0.38'),
             // 数据库名
-            'database'        => env('DB_NAME', 'tms'),
+            'database'        => env('DB_NAME', 'rms'),
             // 用户名
-            'username'        => env('DB_USER', 'admin'),
+            'username'        => env('DB_USER', 'rmsAdmin'),
             // 密码
             'password'        => env('DB_PASS', '123aceACE'),
             // 端口
@@ -38,7 +38,7 @@ return [
             // 数据库编码默认采用utf8
             'charset'         => env('DB_CHARSET', 'utf8'),
             // 数据库表前缀
-            'prefix'          => env('DB_PREFIX', ''),
+            'prefix'          => env('DB_PREFIX', 'rms_'),
 
             // 数据库部署方式:0 集中式(单一服务器),1 分布式(主从服务器)
             'deploy'          => 0,

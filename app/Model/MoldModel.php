@@ -4,12 +4,14 @@ namespace app\model;
 
 use think\Model;
 use think\model\concern\SoftDelete;
-use app\Model\Part;
+use app\Model\PartInfo;
 
-class Mold extends Model
+class MoldModel extends Model
 {
     // 指定表名
-    protected $table = 'mold_info';
+    protected $table = 'rms_mold_info';
+    // 设置当前模型的数据库连接 
+    protected $connection = 'mysql';
     
     // 指定主键名
     protected $pk = 'id';
@@ -27,7 +29,7 @@ class Mold extends Model
     //关联外键
     public function parts()
     {
-        return $this->hasMany(Part::class,'id','part_no');
+        return $this->hasMany(PartInfo::class);
     }
 
     //长宽高修改器

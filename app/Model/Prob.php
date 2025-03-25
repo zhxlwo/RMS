@@ -8,7 +8,7 @@ use think\model\concern\SoftDelete;
 class Prob extends Model
 {
     // 指定表名
-    protected $table = 'prob_list';
+    protected $table = 'rms_prob_list';
     
     // 指定主键名
     protected $pk = 'id';

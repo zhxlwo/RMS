@@ -4,10 +4,10 @@ namespace app\controller;
 
 use app\BaseController;
 use think\facade\View;
-use app\Model\Part as pa;
+use app\Model\partInfo as pa;
 use app\Model\Proj as pj;
 use app\Model\Prob as pb;
-use app\Model\Mold;
+use app\Model\MoldInfo;
 
 /**
  * 	

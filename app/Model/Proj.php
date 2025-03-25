@@ -8,7 +8,7 @@ use think\model\concern\SoftDelete;
 class Proj extends Model
 {
     // 指定表名
-    protected $table = 'proj_info';
+    protected $table = 'rms_proj_info';
     
     // 指定主键名
     protected $pk = 'id';

@@ -4,8 +4,9 @@ namespace app\controller;
 
 use app\BaseController;
 use think\facade\View;
-use app\Model\Mold as mo;
+use app\Model\MoldModel as mo;
 use app\Model\Prob as pr;
+use think\facade\Db;
 use think\Request;
 
 class Mold extends BaseController
@@ -15,6 +16,7 @@ class Mold extends BaseController
     public function moldInfo()
     {
         $res = mo::with('parts')->select();
+        // $res = Db::table('rms_mold_info')->with('parts')->select();
         foreach ($res as $key => $value) {
             foreach ($res as $key => $value) {
                 // code...
@@ -22,14 +24,14 @@ class Mold extends BaseController
                 $value['length'] = $med[0];
                 $value['width'] = $med[1];
                 $value['heigh'] = $med[2];
-            $molds[$key] = $value;
+                $molds[$key] = $value;
             }
             // code...
-               
+            
         }
-        // return json($res);
         view::assign('molds', $molds);
         // view::assign('STATIC', STATIC);
+        // return json($res);
         return view::fetch();
     }
 

@@ -5,10 +5,10 @@ namespace app\model;
 use think\Model;
 use think\model\concern\SoftDelete;
 
-class Part extends Model
+class PartInfo extends Model
 {
     // 指定表名
-    protected $table = 'part_info';
+    protected $table = 'rms_part_info';
     
     // 指定主键名
     protected $pk = 'id';
