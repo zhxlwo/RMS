@@ -5,10 +5,10 @@ namespace app\model;
 use think\Model;
 use think\model\concern\SoftDelete;
 
-class PartInfo extends Model
+class CustomModel extends Model
 {
     // 指定表名
-    protected $table = 'rms_part_info';
+    protected $table = 'rms_comp_info';
     
     // 指定主键名
     protected $pk = 'id';
@@ -19,6 +19,5 @@ class PartInfo extends Model
     //软删除
     use SoftDelete;
     protected $deleteTime = 'delete_time';
-
 
 }

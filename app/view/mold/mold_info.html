@@ -3,11 +3,11 @@
         <!-- 资源加载 -->
         <!-- Datatables css -->
         <link href="__VC__/assets/vendor/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css" />
-        <!-- <link href="__VC__/assets/vendor/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" type="text/css" /> -->
-        <!-- <link href="__VC__/assets/vendor/datatables.net-fixedcolumns-bs5/css/fixedColumns.bootstrap5.min.css" rel="stylesheet" type="text/css" /> -->
-        <!-- <link href="__VC__/assets/vendor/datatables.net-fixedheader-bs5/css/fixedHeader.bootstrap5.min.css" rel="stylesheet" type="text/css" /> -->
-        <!-- <link href="__VC__/assets/vendor/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet" type="text/css" /> -->
-        <!-- <link href="__VC__/assets/vendor/datatables.net-select-bs5/css/select.bootstrap5.min.css" rel="stylesheet" type="text/css" /> -->
+        <link href="__VC__/assets/vendor/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+        <link href="__VC__/assets/vendor/datatables.net-fixedcolumns-bs5/css/fixedColumns.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+        <link href="__VC__/assets/vendor/datatables.net-fixedheader-bs5/css/fixedHeader.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+        <link href="__VC__/assets/vendor/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+        <link href="__VC__/assets/vendor/datatables.net-select-bs5/css/select.bootstrap5.min.css" rel="stylesheet" type="text/css" />
         {include file="public/link"/}
         {/block}
 {block name="content"}
@@ -46,8 +46,8 @@
                             <div class="panel panel-default">
                                 <div class="panel-body">
                                     <div class="row">
-                                        <div class="col-md-12 col-sm-12 col-xs-12 overflow-x-auto">
-                                            <table id="moldsdatatable" class="table table-hover table-bordered dt-responsive w-100">
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <table id="moldsdatatable" class="table table-hover table-bordered w-100 nowrap table-sm">
                                                 <thead>
                                                     <tr class="fs-6">
                                                         <th>序号</th>
@@ -56,8 +56,9 @@
                                                         <th>模具名称</th> 
                                                         <th>产品编号</th>
                                                         <th>产品名称</th>
-                                                        <th>模具尺寸</th>
-                                                        <th>型腔体积</th>
+                                                        <th>模具尺寸(mm)</th>
+                                                        <th>模具重量(Kg)</th>
+                                                        <th>型腔体积(m3)</th>
                                                         <th>交付日期</th>
                                                         <th>状态</th>
                                                         <th>供应商</th>
@@ -78,6 +79,7 @@
                                                                 <td>{$part.part_no}</td><td>{$part.part_name}</td>
                                                                 {/volist}
                                                             <td>{$mold.mold_size}</td>
+                                                            <td>{$mold.weight}</td>
                                                             <td>{$mold.cavity_volume}</td>
                                                             <td>{$mold.delivery_date}</td>
                                                             <td>{$mold.current_status}</td>
@@ -91,7 +93,6 @@
                                                     {/volist}
                                                 </tbody>
                                             </table>
-
                                         </div>
                                     </div>
                                 </div>
@@ -259,7 +260,7 @@
     <script src="__YL__/js/yl.min.js"></script>
     <script src="__VC__/assets/vendor/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="__VC__/assets/vendor/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
-    <!-- <script src="__VC__/assets/vendor/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="__VC__/assets/vendor/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
     <script src="__VC__/assets/vendor/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
     <script src="__VC__/assets/vendor/datatables.net-fixedcolumns-bs5/js/fixedColumns.bootstrap5.min.js"></script>
     <script src="__VC__/assets/vendor/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
@@ -270,9 +271,6 @@
     <script src="__VC__/assets/vendor/datatables.net-buttons/js/buttons.print.min.js"></script>
     <script src="__VC__/assets/vendor/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
     <script src="__VC__/assets/vendor/datatables.net-select/js/dataTables.select.min.js"></script>
-    <script src="__VC__/assets/js/pages/datatable.init.js"></script>
-    <script src="__VC__/assets/js/app.min.js"></script> -->
-    <script type="text/javascript">
-
-    </script>
+    <!-- <script type="text/javascript">
+    </script> -->
 {/block}

@@ -33,7 +33,7 @@
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-md-12 col-sm-12 col-xs-12 overflow-x-auto">
-                                            <table id="datatable" class="table table-hover table-bordered dt-responsive w-100">
+                                            <table id="projdatatable" class="table table-hover table-bordered dt-responsive w-100">
                                                 <thead>
                                                     <tr class="fs-6">
                                                         <th>序号</th>
@@ -56,10 +56,14 @@
                                                             <td>{$k+1}</td>
                                                             <td>{$project.proj_no}</td>
                                                             <td>{$project.style}</td>
-                                                            <td>{$project.customer}</td>
-                                                            <td>{$project.start_time}</td>
-                                                            <td>{$project.sop}</td>
-                                                            <td>{$project.eop}</td>
+                                                            <td>
+                                                                {if $project.custom == null}
+                                                                {else}{$project.custom.name}
+                                                                {/if}
+                                                            </td>
+                                                            <td>{$project.start_time|date='Y-m-d'}</td>
+                                                            <td>{$project.sop|date='Y-m-d'}</td>
+                                                            <td>{$project.eop|date='Y-m-d'}</td>
                                                             <td>{$project.status}</td>
                                                             <td>{$project.remark}</td>
                                                             <td id="editCol">

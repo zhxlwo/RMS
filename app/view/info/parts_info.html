@@ -36,11 +36,13 @@
                                                     <thead>
                                                         <tr class="fs-6">
                                                             <th>序号</th>
-                                                            <th>产品号</th>
+                                                            <th>产品编号</th>
                                                             <th>名称</th>
                                                             <th>图片</th>
                                                             <th>项目</th>
-                                                            <th>上级号</th>
+                                                            <th>上级件号</th>
+                                                            <th>所属系统</th>
+                                                            <th>创建时间</th>
                                                             <th>状态</th>
                                                             <th>备注</th>
                                                             <th>操作</th>
@@ -52,11 +54,19 @@
                                                         {foreach $parts as $k=>$part}
                                                             <tr>
                                                                 <td>{$k+1}</td>
-                                                                <td>{$part.part_id}</td>
+                                                                <td>{$part.part_no}</td>
                                                                 <td>{$part.part_name}</td>
                                                                 <td>{$part.part_image}</td>
-                                                                <td>{$part.proj_id}</td>
+                                                                <td>{if $part.proj == null}
+                                                                    {else}{$part.proj.proj_no}
+                                                                    {/if}
+                                                                </td>
+                                                                <!-- {volist name  = "part.proj" id = 'vo' empty="<td></td><td></td>"}
+                                                                <td>{$vo.proj_id}</td>
+                                                                {/volist} -->
                                                                 <td>{$part.up_id}</td>
+                                                                <td>{$part.part_system}</td>
+                                                                <td>{$part.creat_time|date='Y-m-d H:i'}</td>
                                                                 <td>{$part.status}</td>
                                                                 <td>{$part.remark}</td>
                                                                 <td id="editCol">

@@ -4,7 +4,7 @@ namespace app\model;
 
 use think\Model;
 use think\model\concern\SoftDelete;
-use app\Model\PartInfo;
+use app\Model\PartModel;
 
 class MoldModel extends Model
 {
@@ -23,14 +23,29 @@ class MoldModel extends Model
     use SoftDelete;
     protected $deleteTime = 'delete_time';
 
+    // 定义日期字段
+    protected $dateFormat = 'Y/m/d';
+
     //指定要转换的字段  
     protected $translatable = ['timestamp_field']; 
+
+    // 定义交付日期的访问器
+    public function getDeliveryDateAttr($value)
+    {
+        return date('Y-m-d', strtotime($value));
+    }
 
     //关联外键
     public function parts()
     {
-        return $this->hasMany(PartInfo::class);
+        return $this->hasMany(PartModel::class,'id','part_id');
     }
+    // //关联外键
+    // public function projs()
+    // {
+    //     // return $this->belongsTo(ProjModel::class,'proj_id','id');
+    //     return $this->belongsTo(ProjModel::class,'id','proj_id');
+    // }
 
     //长宽高修改器
     public function setMoldSizeAttr($value,$data)
