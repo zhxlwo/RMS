@@ -5,6 +5,7 @@ namespace app\model;
 use think\Model;
 use think\model\concern\SoftDelete;
 use app\Model\PartModel;
+use app\Model\CustomModel as compS;
 
 class MoldModel extends Model
 {
@@ -41,11 +42,11 @@ class MoldModel extends Model
         return $this->hasMany(PartModel::class,'id','part_id');
     }
     // //关联外键
-    // public function projs()
-    // {
-    //     // return $this->belongsTo(ProjModel::class,'proj_id','id');
-    //     return $this->belongsTo(ProjModel::class,'id','proj_id');
-    // }
+    public function comp()
+    {
+        // return $this->belongsTo(ProjModel::class,'proj_id','id');
+        return $this->hasone(compS::class,'id','supplier_id');
+    }
 
     //长宽高修改器
     public function setMoldSizeAttr($value,$data)

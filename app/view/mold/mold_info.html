@@ -53,6 +53,7 @@
                                                         <th>序号</th>
                                                         <th>项目号</th>
                                                         <th>模具编号</th>
+                                                        <th>模具类型</th>
                                                         <th>模具名称</th> 
                                                         <th>产品编号</th>
                                                         <th>产品名称</th>
@@ -74,6 +75,7 @@
                                                             <td>{$k}</td>
                                                             <td>{$mold.proj_no}</td>
                                                             <td>{$mold.mold_no}</td>
+                                                            <td>{$mold.mould_type}</td>
                                                             <td>{$mold.mold_name}</td>
                                                             {volist name  = "mold.parts" id = 'part' empty="<td></td><td></td>"}
                                                                 <td>{$part.part_no}</td><td>{$part.part_name}</td>
@@ -83,7 +85,12 @@
                                                             <td>{$mold.cavity_volume}</td>
                                                             <td>{$mold.delivery_date}</td>
                                                             <td>{$mold.current_status}</td>
-                                                            <td>{$mold.supplier}</td>
+                                                            <td>
+                                                                {if $mold.supplier == null}
+                                                                {else}{$mold.supplier.name}
+                                                                {/if}
+
+                                                            </td>
                                                             <td>{$mold.location}</td>
                                                             <td id="editCol">
                                                                <a href="javascript: void(0);" class="text-reset fs-16 px-1" onclick="openModal(this)"> <i class="ri-edit-line"></i></a>
@@ -117,34 +124,28 @@
                                                                             <div class="form" >
                                                                                 <form class="form-horizontal tasi-form" id="moldInfoForm" method="get" action="#" novalidate="novalidate">
                                                                                     <div class="form-group row">
-                                                                                        <label for="" class="col-form-label col-lg-2">项目编号 *</label>
+                                                                                        <label for="mold_no" class="col-lg-2 col-form-label">模具编号 *</label>
                                                                                         <div class="col-lg-4">
-                                                                                            <input class="form-control " id="proj_no" name="proj_no" type="text">
+                                                                                            <input class="form-control" id="mold_no" name="mold_no" type="text" autocomplete="off"  placeholder="添加则留空">
                                                                                         </div>
-                                                                                        <label for="password" class="col-lg-2 col-form-label">产品编号 *</label>
-                                                                                        <div class="col-lg-4">
-                                                                                            <input class="form-control " id="part_no" name="part_no" type="text" autocomplete="off">
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="form-group row">
-                                                                                        <label for="firstname" class="col-lg-2 col-form-label">模具编号 *</label>
-                                                                                        <div class="col-lg-4">
-                                                                                            <input class="form-control" id="mold_no" name="mold_no" type="text" autocomplete="off">
-                                                                                        </div>
-                                                                                        <label for="lastname" class="col-lg-2 col-form-label">模具名称 *</label>
+                                                                                        <label for="mold_name" class="col-lg-2 col-form-label">模具名称 *</label>
                                                                                         <div class="col-lg-4">
                                                                                             <input class="form-control" id="mold_name" name="mold_name" type="text">
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="form-group row">
-                                                                                        <label for="confirm_password" class="col-form-label col-lg-2">模具类型 *</label>
+                                                                                        <label for="mold_type" class="col-form-label col-lg-2">模具类型 *</label>
                                                                                         <div class="col-lg-4">
                                                                                             <select class="form-select" id="mold_type" name="mold_type">
-                                                                                                <option>两板模</option>
-                                                                                                <option>三板模</option>
+                                                                                                <option>注塑模具</option>
+                                                                                                <option>冲压模具</option>
+                                                                                                <option>发泡模具</option>
+                                                                                                <option>吸塑模具</option>
+                                                                                                <option>吹塑模具</option>
+                                                                                                <option>挤出模具</option>
                                                                                             </select>
                                                                                         </div>
-                                                                                        <label for="confirm_password" class="col-form-label col-lg-2">状态 *</label>
+                                                                                        <label for="current_status" class="col-form-label col-lg-2">状态 *</label>
                                                                                         <div class="col-lg-4">
                                                                                             <select class="form-select" id="current_status" name="current_status">
                                                                                                 <option>待定</option>
@@ -158,66 +159,59 @@
                                                                                             </select>
                                                                                         </div>
                                                                                     </div>
-
                                                                                     <div class="form-group row">
-                                                                                        <label for="confirm_password" class="col-form-label col-lg-2">供应商 </label>
+                                                                                        <label for="supplier_no" class="col-form-label col-lg-2">供方代码 </label>
                                                                                         <div class="col-lg-4">
-                                                                                            <select class="form-select" id="supplier" name="supplier">
-                                                                                                <option>待定</option>
-                                                                                                <option>重庆恒东</option>
-                                                                                                <option>重庆芸生</option>
-                                                                                                <option>江阴常青</option>
-                                                                                                <option>上海秉直</option>
-                                                                                                <option>吉林恒通</option>
-                                                                                                <option>江苏艺极</option>
-                                                                                            </select>
+                                                                                            <input class="form-control" id="supplier_no" name="mold_name" type="text">
                                                                                         </div>
-                                                                                        <label for="confirm_password" class="col-form-label col-lg-2">交付日期* </label>
+                                                                                        <label for="delivery_date" class="col-form-label col-lg-2">交付日期* </label>
                                                                                         <div class="col-lg-4">
                                                                                             <input class="form-control" id="delivery_date" type="date" name="delivery_date">
                                                                                         </div>
                                                                                     </div>
-
                                                                                     <div class="form-group row">
-                                                                                        <label for="confirm_password" class="col-2 col-form-label">模腔体积 </label>
+                                                                                        <label for="cavity_volume" class="col-2 col-form-label">模腔体积 </label>
                                                                                         <div class="col-lg-4">
                                                                                             <input class="form-control " id="cavity_volume" name="cavity_volume" type="text" placeholder='m&#xB3;'>
                                                                                         </div>
-                                                                                        <label for="confirm_password" class="col-2 col-form-label">模具质量 </label>
+                                                                                        <label for="mold_weight" class="col-2 col-form-label">模具质量 </label>
                                                                                         <div class="col-lg-4">
                                                                                             <input class="form-control " id="mold_weight" name="mold_weight" type="text" placeholder="KG">
                                                                                         </div>
                                                                                     </div>
-
-                                                                                    <div class="form-group ">
-                                                                                        <label for="confirm_password" class="col-form-label col-lg-2">模具尺寸</label>
-                                                                                        <div class="row">
-                                                                                            <div class="col-lg-3">
-                                                                                                <input class="form-control " id="length" name="length" type="text" placeholder="长m">
-                                                                                            </div>
-                                                                                                <label for="placeholder" class="col-lg-1 col-form-label">*</label>
-                                                                                            <div class="col-lg-3">
-                                                                                                <input class="form-control " id="width" name="width" type="text" placeholder="宽m">
-                                                                                            </div>
-                                                                                                <label for="placeholder" class="col-lg-1 col-form-label">*</label>
-                                                                                            <div class="col-lg-3">
-                                                                                                <input class="form-control " id="height" name="height" type="text" placeholder="高m">
-                                                                                            </div>
+                                                                                    <div class="form-group row">
+                                                                                        <label for="mold_size" class="col-form-label col-lg-2">模具尺寸</label>    
+                                                                                        <div class="col-lg-2"> 
+                                                                                        <input class="form-control" id="length" name="length" type="text" placeholder="长m">
+                                                                                        </div> 
+                                                                                            <label for="placeholder" class="col-auto col-form-label">*</label>
+                                                                                        <div class="col-lg-2">
+                                                                                            <input class="form-control" id="width" name="width" type="text" placeholder="宽m">
                                                                                         </div>
-                                                                                    </div> 
+                                                                                            <label for="placeholder" class="col-auto col-form-label">*</label>
+                                                                                        <div class="col-lg-2">
+                                                                                            <input class="form-control" id="height" name="height" type="text" placeholder="高m">
+                                                                                        </div>                            
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="part_no" class="col-form-label col-lg-2">产品编号 *</label>
+                                                                                        <div class="col-lg-10">
+                                                                                            <input class="form-control part_no_input" id="part_no_1" name="part_no[]" type="text" autocomplete="off">
+                                                                                        </div>
+                                                                                    </div>
                                                                                     <div class="form-group ">
-                                                                                        <label for="confirm_password" class="col-form-label col-auto">供应商模具号 </label>
+                                                                                        <label for="supplier_mold_no" class="col-form-label col-auto">供应商模具号 </label>
                                                                                         <div class="col-lg-10">
                                                                                             <input class="form-control " id="supplier_mold_no" name="supplier_mold_no" type="text">
                                                                                             </div>
                                                                                     </div>
                                                                                     <div class="form-group ">
-                                                                                        <label for="confirm_password" class="col-form-label col-lg-2">存放地 </label>
+                                                                                        <label for="location" class="col-form-label col-lg-2">存放地 </label>
                                                                                         <div class="col-lg-10">
                                                                                             <input class="form-control " id="location" name="location" type="text">
                                                                                         </div>
                                                                                     </div>
-                                                                                    <label for="confirm_password" class="col-form-label col-lg-4">*  为必填项目</label>
+                                                                                    <label for="" class="col-form-label col-lg-4">*  为必填项目</label>
 
 
 

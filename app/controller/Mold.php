@@ -15,8 +15,7 @@ class Mold extends BaseController
     //渲染模具清单
     public function moldInfo()
     {
-        $res = mo::with('parts')->select();
-        // $res = Db::table('rms_mold_info')->with('parts')->select();
+        $res = mo::with(['parts','comp'])->select();
         foreach ($res as $key => $value) {
             foreach ($res as $key => $value) {
                 // code...
@@ -29,6 +28,7 @@ class Mold extends BaseController
             // code...
             
         }
+        // var_dump($molds);
         view::assign('molds', $molds);
         // view::assign('STATIC', STATIC);
         // return json($res);
